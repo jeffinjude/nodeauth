@@ -17,6 +17,9 @@
     "connect-flash": "*",
     "express-messages": "*",
     "express-validator": "*",
-    "passport": "*"
+    "passport": "*",
+    "passport-local": "*",
+    "passport-http": "*",
+    "multer": "*"
   }
 }
