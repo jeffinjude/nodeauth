@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('../app');
+var app = require('../app'); // We specify the main js file of our app.
 var debug = require('debug')('nodeauth:server');
 var http = require('http');
 

@@ -1,7 +1,41 @@
+// Template file for jade. Refer https://www.sitepoint.com/jade-tutorial-for-beginners/
 doctype html
-html
+html(lang='en')
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    title Welcome
+    link(href='/stylesheets/bootstrap.css', rel='stylesheet')
+    link(href='/stylesheets/style.css', rel='stylesheet')
   body
-    block content
+    .navbar.navbar-default(role='navigation')
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='#') NodeAuth
+        .navbar-collapse.collapse
+          ul.nav.navbar-nav
+            // If user is logged in the user object won't be null so we display members link.
+            if user
+              // If the title variable we passed while rendering jade is 'Members' then we set the class of list to active so that it's highlighted.
+              li(class=(title == 'Members' ? 'active' : ''))
+                a(href='/') Members
+            // If user is not logged in user object will be null so we display register and login links.
+            if !user
+              li(class=(title == 'Register' ? 'active' : ''))
+                a(href='/users/register') Register
+              li(class=(title == 'Login' ? 'active' : ''))
+                a(href='/users/login') Login
+          ul.nav.navbar-nav.navbar-right
+            if user
+              li
+                a(href='/users/logout') Logout
+    .container
+      // Displayes the flash messages if any
+      != messages()
+      block content
+     
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+    script(src='/javascripts/bootstrap.js')
